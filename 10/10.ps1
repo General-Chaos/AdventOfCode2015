@@ -6,7 +6,7 @@ class lookandsay {
     }
     [void] Transform(){
         $this.value = [regex]::Replace($this.value,"([0-9])\1*",{
-            "$($args.value.length)$(($args.value -split '')[1] )"
+            "$($args.value.length)$(($args.value -split '')[1])"
         })
     }
 }
