@@ -3,12 +3,12 @@ class lookandsay {
     #Constructor
     lookandsay([string]$value){
          $this.value = $value
-     }
-     [void] Transform(){
+    }
+    [void] Transform(){
         $this.value = [regex]::Replace($this.value,"([0-9])\1*",{
             "$($args.value.length)$(($args.value -split '')[1] )"
         })
-     }
+    }
 }
 
 $object =[lookandsay]::new("1321131112")
