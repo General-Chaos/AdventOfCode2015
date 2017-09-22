@@ -1,7 +1,7 @@
 class lookandsay {
     [string]$value 
     #Constructor
-     lookandsay([string]$value){
+    lookandsay([string]$value){
          $this.value = $value
      }
      [void] Transform(){
