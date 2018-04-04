@@ -14,11 +14,30 @@ for line in open(filename):
     if m:
         answer1 += int(m.group())
 
-print(f"Answer 1 is:{answer1}")
+print(f"Answer 1 is: {answer1}")
 
 # Part 2, actually interprit the json
 jsonobject = json.loads(open(filename).read())
-for a in jsonobject:
-    print(a)
 
-print('red' in jsonobject.values())
+answer2 = 0
+
+
+def iteratered(randobj):
+    global answer2
+    if type(randobj) is str:
+        pass
+    elif type(randobj) is int:
+        answer2 += randobj
+    elif type(randobj) is list:
+        for rand in randobj:
+            iteratered(rand)
+    elif type(randobj) is dict:
+        if "red" in randobj.values():
+            pass
+        else:
+            for rand in randobj.values():
+                iteratered(rand)
+
+iteratered(jsonobject)
+
+print(f"Answer 2 is: {answer2}")
