@@ -1,5 +1,6 @@
 import os
 import re
+import random
 
 fileDir = os.path.dirname(os.path.realpath(__file__))
 moleculeinput = os.path.join(fileDir, 'molecule.txt')
@@ -23,3 +24,20 @@ for sub in substitutions:
 
 Answer1 = len(results)
 print(f"The answer to 1 is: {Answer1}")
+
+
+# Part 2, work backwards
+def iterate(string, substitutions):
+    sub = random.choice(substitutions)
+    newstring = string.replace(sub[1], sub[0], 1)
+    return newstring
+
+iterstring = molecule
+loopcount = 0
+while iterstring != "e":
+    newstring = iterate(iterstring, substitutions)
+    if newstring != iterstring:
+        iterstring = newstring
+        loopcount = loopcount + 1
+
+print(f"The answer to 2 is: {loopcount}")
